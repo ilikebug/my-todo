@@ -1,0 +1,436 @@
+[
+  {
+    "id": "mqtcadek1r2r",
+    "text": "ups web hook 额外收费 FourKites 定制需求",
+    "list": "next",
+    "pri": "P0",
+    "ctx": "",
+    "due": "2026-07-17",
+    "done": true,
+    "created": 1782382109276,
+    "log": [
+      {
+        "t": 1782384466303,
+        "text": "会议：需求回顾，拉起各方需要做什么"
+      },
+      {
+        "t": 1782724405367,
+        "text": "下一步:和销售 Joe 对齐：1. 是否对历史数据进行收费 2. custom field 字段对齐 3.确定发版时间"
+      },
+      {
+        "t": 1782971751400,
+        "text": "下一步:等待 carrier Tracking 等待字段对其"
+      },
+      {
+        "t": 1784024225373,
+        "text": "进行中:测试中"
+      },
+      {
+        "t": 1784192729893,
+        "text": "已完成:发版"
+      },
+      {
+        "t": 1784192737709,
+        "text": "下一步: 需要 2 天后看下客户是否触发额外收费"
+      }
+    ],
+    "next": "已经发版，需要 2 天后看下客户是否触发额外收费",
+    "note": "https://aftership.atlassian.net/browse/ABU-39823\n背景\n\nUPS webhook 费用高，是 FourKites 报价的成本大头。FourKites 只有约 30% 的 shipment 需要 webhook 的低延迟，其余 70% 用标准 UPS API 即可。因此需要支持按单选择接入渠道，以控制成本。\n\n需求\n\n1. 渠道选择（opt-in webhook）\n\n- FourKites 若希望某条 shipment 走 UPS webhook，会在创建 tracking 时于 custom_fields 带上约定字段；不带则默认走标准 UPS API。\n- 字段约定：\n  - Key：Premium Webhook（通用名，便于未来其他 carrier 复用）\n  - Value = yes → 路由到 UPS webhook\n  - 其他值 / null / 缺失 → 标准 UPS API\n- 默认行为：无该字段即走 API（webhook 为显式开启）。\n\n2. 计费\n\n- 参照 Shop App 10-min delivery SLA 用量上报方式，将 UPS webhook 使用量作为独立 usage type 上报：\n  - 每条 tracking 基础费：$0.01\n  - 使用 UPS webhook 额外：+$0.0038\n\n\n待确认（疑问）\n1. Premium Webhook 字段名定稿：仍是 open item，需与 FourKites 最终确认。\n2. 确定是否存在历史数据是否收费和 joe 确认\n\n排期：\ntracking：7.9 提测\ncarrier tracking：7.9 提测\ndata：不需要处理\nbilling：不需要处理 \nQA： 7.14 发版",
+    "doneAt": 1784261572649
+  },
+  {
+    "id": "mqtcat6wfsgi",
+    "text": "知识库 + 更新 + owner",
+    "list": "someday",
+    "pri": "P1",
+    "ctx": "",
+    "due": "",
+    "done": true,
+    "created": 1782382129736,
+    "log": [
+      {
+        "t": 1784024445439,
+        "text": "已完成: 知识库 v2 的开发"
+      }
+    ],
+    "next": "当前已经完成知识库的二期开发，之后看下是否存在优化点",
+    "doneAt": 1788156859682
+  },
+  {
+    "id": "mqtcb795kbyx",
+    "text": "shop app error code 跟进",
+    "list": "waiting",
+    "pri": "P1",
+    "ctx": "",
+    "due": "2026-06-30",
+    "done": true,
+    "created": 1782382147961,
+    "log": [
+      {
+        "t": 1782446213686,
+        "text": "进行中: 和 mike 确认怎么给 shopify error code"
+      },
+      {
+        "t": 1782704309359,
+        "text": "下一步: Mike 需要和 shopify 确认我们方案是否可行"
+      }
+    ],
+    "next": "确定方案是否可以，没问题进行需求对齐",
+    "doneAt": 1788156867891
+  },
+  {
+    "id": "mqtcbl32uv4a",
+    "text": "广告接入 API",
+    "list": "next",
+    "pri": "P1",
+    "ctx": "",
+    "due": "2026-07-10",
+    "done": true,
+    "created": 1782382165886,
+    "log": [
+      {
+        "t": 1782445897536,
+        "text": "进行中: 代码开发"
+      },
+      {
+        "t": 1782445917470,
+        "text": "下一步: 测试"
+      }
+    ],
+    "next": "代码调优，然后测试，发版",
+    "doneAt": 1782459839281
+  },
+  {
+    "id": "mque2vmwa2m9",
+    "text": "欧洲服务器迁移",
+    "list": "waiting",
+    "pri": "P0",
+    "ctx": "",
+    "due": "2026-07-03",
+    "done": false,
+    "created": 1782445585064,
+    "log": [
+      {
+        "t": 1782972079180,
+        "text": "下一步:计算最小流程的服务器成本，人力成本"
+      }
+    ],
+    "note": "具体任务：\n-  tracking 系统上下游有哪些 \n- public api 创建流程整理\n存在问题：\n- 配置中心：spanner，等配置做成配置",
+    "next": "计算最小流程的服务器成本，人力成本，跟进项等"
+  },
+  {
+    "id": "mquiudf2zxjs",
+    "text": "统计 Tracking 中 order 相关功能以及对应平台使用情况",
+    "list": "next",
+    "pri": "P0",
+    "ctx": "",
+    "due": "2026-07-28",
+    "done": true,
+    "created": 1782453586286,
+    "log": [],
+    "doneAt": 1785296487279
+  },
+  {
+    "id": "mqumsihkj6tg",
+    "text": "Bunning 需要支持 Marketplace shipments",
+    "list": "next",
+    "pri": "P2",
+    "ctx": "",
+    "due": "2026-09-17",
+    "done": false,
+    "created": 1782460218009,
+    "log": [
+      {
+        "t": 1783576987561,
+        "text": "进行中:需要拉一个会议和 connector 对齐下双方边界"
+      },
+      {
+        "t": 1783577000503,
+        "text": "下一步: 7.17 提测"
+      }
+    ],
+    "note": "https://aftership.atlassian.net/browse/CRT-5922",
+    "next": "需要等待客户授权 token 才能测试"
+  },
+  {
+    "id": "mquqa0itf51r",
+    "text": "tracking order slug 更新机制修改",
+    "list": "next",
+    "pri": "P1",
+    "ctx": "",
+    "due": "2026-07-18",
+    "done": true,
+    "created": 1782466073381,
+    "log": [],
+    "note": "现在主要是存在一个问题是客户手动修改了 tracking 的 slug 然后 tracking order 会给他修改回来\n\n解决方案：\n可以通过 order event 的 LastApplied.Fulfillments[x].Trackings[x].Slug 和 LastApplied.Fulfillments[x].Trackings[x].OriginalCourierName 是否变更了来进行判断",
+    "doneAt": 1784023815955
+  },
+  {
+    "id": "mr1j276xpp0b",
+    "text": "BOPIS 优化需求：根据 order tags 生成 custom status 事件",
+    "list": "next",
+    "pri": "P1",
+    "ctx": "",
+    "due": "2026-07-20",
+    "done": true,
+    "created": 1782877214697,
+    "doneAt": 1782971505430
+  },
+  {
+    "id": "mr2x1n8uwh05",
+    "text": "shop app 6 月份报告书写",
+    "list": "next",
+    "pri": "P0",
+    "ctx": "",
+    "due": "2026-07-10",
+    "done": true,
+    "created": 1782961169646,
+    "doneAt": 1783927542024
+  },
+  {
+    "id": "mr4qonbo1sji",
+    "text": "书写 ads onboarding 文档",
+    "list": "next",
+    "pri": "P0",
+    "ctx": "",
+    "due": "2026-07-02",
+    "done": true,
+    "created": 1783071417876,
+    "doneAt": 1783071424042
+  },
+  {
+    "id": "mr8omh284tq4",
+    "text": "Tracking 根据 order 导入优化，主要优化导入阶段 onboarding 逻辑",
+    "list": "someday",
+    "pri": "P2",
+    "ctx": "",
+    "due": "",
+    "done": true,
+    "created": 1783309821920,
+    "doneAt": 1788156860491
+  },
+  {
+    "id": "mriumzdy1w4n",
+    "text": "Tracking CreateShipment 新增 affiliate source（枚举 + 免除用户 quota）",
+    "list": "next",
+    "pri": "P0",
+    "ctx": "",
+    "due": "2026-07-15",
+    "done": true,
+    "created": 1783924585126,
+    "log": [],
+    "doneAt": 1784191962389
+  },
+  {
+    "id": "mrkhpfxy2klv",
+    "text": "shop app POC 事情跟进",
+    "list": "waiting",
+    "pri": "P0",
+    "ctx": "",
+    "due": "2026-07-18",
+    "done": true,
+    "created": 1784023797238,
+    "log": [
+      {
+        "t": 1784024309320,
+        "text": "进行中: 根据 6 月份数据统计了一版我们的数据质量，未对齐的需要问下mike"
+      },
+      {
+        "t": 1784024363256,
+        "text": "下一步: 和 shopify 对齐统计指标"
+      }
+    ],
+    "next": "等待 mike 回复，然后对齐统计指标，看是否存在可以提升的指标",
+    "doneAt": 1788156868440
+  },
+  {
+    "id": "mrskw1x918q0",
+    "text": "添加 shop app 业务监控",
+    "list": "next",
+    "pri": "",
+    "ctx": "",
+    "due": "2026-07-20",
+    "done": true,
+    "created": 1784512873917,
+    "doneAt": 1784773475750
+  },
+  {
+    "id": "ms2myi54s2ry",
+    "text": "Verizon 客户数据合规",
+    "list": "next",
+    "pri": "P0",
+    "ctx": "",
+    "due": "2026-08-31",
+    "done": true,
+    "created": 1785121009240,
+    "log": [],
+    "next": "拉网关，林老师 等同学看下有什么好的方案",
+    "doneAt": 1787557055064
+  },
+  {
+    "id": "ms2ub12ctwat",
+    "text": "看下 quota revert 具体问题 原因然后给出方案",
+    "list": "next",
+    "pri": "P0",
+    "ctx": "",
+    "due": "2026-08-14",
+    "done": true,
+    "created": 1785133350948,
+    "log": [],
+    "next": "需要统计近 3 个月的 revet quota ticket，调查 ticket 原因然后统计归因 最后再给处理方案",
+    "doneAt": 1787557051896
+  },
+  {
+    "id": "mscykk4bpw3w",
+    "text": "returncenter 的 Tracking 修改 Exception 节点到 Ins 和 delivered",
+    "list": "next",
+    "pri": "P0",
+    "ctx": "",
+    "due": "2026-08-06",
+    "done": true,
+    "created": 1785745175772,
+    "doneAt": 1785909664954
+  },
+  {
+    "id": "mscykxrem02w",
+    "text": "成本优化-新一轮统计",
+    "list": "next",
+    "pri": "P0",
+    "ctx": "",
+    "due": "2026-08-07",
+    "done": true,
+    "created": 1785745193450,
+    "doneAt": 1785996033729
+  },
+  {
+    "id": "msecwna865x7",
+    "text": "shipment direction 变成通用需求",
+    "list": "next",
+    "pri": "P1",
+    "ctx": "",
+    "due": "2026-09-30",
+    "done": true,
+    "created": 1785829720544,
+    "log": [],
+    "next": "需要先统计一个版本数据，写一个可行性方案",
+    "doneAt": 1787904851253
+  },
+  {
+    "id": "msed6xg5cb7f",
+    "text": "7月份 shop app 月报书写， AI 成分添加",
+    "list": "next",
+    "pri": "P0",
+    "ctx": "",
+    "due": "2026-08-10",
+    "done": true,
+    "created": 1785830200277,
+    "log": [],
+    "next": "",
+    "doneAt": 1786416861140
+  },
+  {
+    "id": "msfsllppcijf",
+    "text": "检查下 return shipment 定制的执行情况",
+    "list": "next",
+    "pri": "P0",
+    "ctx": "",
+    "due": "2026-08-06",
+    "done": true,
+    "created": 1785916545325,
+    "doneAt": 1786005704125
+  },
+  {
+    "id": "msfw8gyck1es",
+    "text": "shop app H1 报告生成",
+    "list": "next",
+    "pri": "P0",
+    "ctx": "",
+    "due": "2026-08-06",
+    "done": true,
+    "created": 1785922651092,
+    "doneAt": 1786004865634
+  },
+  {
+    "id": "msidfg12ln4v",
+    "text": "看下 Tracking order location 改版",
+    "list": "next",
+    "pri": "P0",
+    "ctx": "",
+    "due": "2026-08-07",
+    "done": true,
+    "created": 1786072462310,
+    "doneAt": 1786333646609
+  },
+  {
+    "id": "msmv6whjmevg",
+    "text": "梳理一下白名单的功能",
+    "list": "next",
+    "pri": "P1",
+    "ctx": "",
+    "due": "2026-08-29",
+    "done": true,
+    "created": 1786344161527,
+    "doneAt": 1787732559976
+  },
+  {
+    "id": "mspr9mj30dbb",
+    "text": "排查下删除 Tracking 为什么没有上报到",
+    "list": "next",
+    "pri": "P1",
+    "ctx": "",
+    "due": "",
+    "done": true,
+    "created": 1786518968655,
+    "log": [],
+    "doneAt": 1787296512906
+  },
+  {
+    "id": "msyetlzj5ehb",
+    "text": "优化知识库的查询",
+    "list": "next",
+    "pri": "",
+    "ctx": "",
+    "due": "2026-09-30",
+    "done": false,
+    "created": 1787042261647,
+    "log": [
+      {
+        "t": 1788946848294,
+        "text": "已完成:config 配置的添加"
+      }
+    ],
+    "note": "- ",
+    "next": ""
+  },
+  {
+    "id": "mt9u1z7cqmn6",
+    "text": "exchange items 需求",
+    "list": "next",
+    "pri": "P0",
+    "ctx": "",
+    "due": "2026-09-20",
+    "done": false,
+    "created": 1787732974201,
+    "log": []
+  },
+  {
+    "id": "mtcaw4fz17vu",
+    "text": "verizon 数据合规 tracking 服务添加请求权限",
+    "list": "inbox",
+    "pri": "",
+    "ctx": "",
+    "due": "",
+    "done": false,
+    "created": 1787882186879
+  },
+  {
+    "id": "mttwqudxe03a",
+    "text": "exception 需求",
+    "list": "next",
+    "pri": "P0",
+    "ctx": "",
+    "due": "2026-09-17",
+    "done": false,
+    "created": 1788946817111
+  }
+]
